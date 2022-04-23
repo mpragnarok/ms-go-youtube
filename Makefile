@@ -29,10 +29,3 @@ env:
 run:
 	$(GOCMD) run main.go
 
-# run application with decoupled logging
-start-web:
-	$(GOCMD) run ./cmd/web -addr=":4000" >>/tmp/info.log 2>>/tmp/error.log
-
-# add -help flag to get flat in app
-run-web-help:
-	$(GOCMD) run ./cmd/web -help
