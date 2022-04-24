@@ -8,22 +8,21 @@ import (
 	"os/signal"
 	"time"
 
-	"github.com/mpragnarok/ms-go-youtube/handlers"
+	"github.com/mpragnarok/ms-go-youtube/product-api/handlers"
 )
 
 func main() {
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
-	hh := handlers.NewHello(l)
-	gh := handlers.NewGoodbye(l)
+	ph := handlers.NewProducts(l)
 	sm := http.NewServeMux()
-	sm.Handle("/", hh)
-	sm.Handle("/goodbye", gh)
+	sm.Handle("/", ph)
 
 	s := &http.Server{
-		Addr: ":9090", Handler: sm,
-		IdleTimeout:  120 * time.Second,
-		ReadTimeout:  1 * time.Second,
-		WriteTimeout: 1 * time.Second,
+		Addr:         ":9090",           // configure the bind address
+		Handler:      sm,                // set the default handler
+		ReadTimeout:  5 * time.Second,   // max time to read request from the client
+		WriteTimeout: 10 * time.Second,  // max time to write response to the client
+		IdleTimeout:  120 * time.Second, // max time for connections using TCP Keep-Alive
 	}
 	go func() {
 		err := s.ListenAndServe()
@@ -42,5 +41,6 @@ func main() {
 	l.Println("Received terminate, graceful shutdown", sig)
 
 	tc, _ := context.WithTimeout(context.Background(), 30*time.Second)
+
 	s.Shutdown(tc)
 }

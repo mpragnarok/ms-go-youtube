@@ -29,3 +29,5 @@ env:
 run:
 	$(GOCMD) run main.go
 
+curl:
+	curl localhost:9090/products | jq

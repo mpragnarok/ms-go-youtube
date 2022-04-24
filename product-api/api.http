@@ -1,0 +1,40 @@
+#
+# Prerequisites
+#
+# install VSCode extension: [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
+# to use this tool
+#
+
+@host=localhost
+@port=9090
+
+
+### Poke main endpoint
+GET http://{{host}}:{{port}}/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+Mina
+
+### GET products endpoint
+GET http://{{host}}:{{port}}/products HTTP/1.1
+
+
+### POST add product endpoint
+POST http://{{host}}:{{port}}/products HTTP/1.1
+Content-Type: application/json
+
+{
+    "id":1,
+    "name": "tea",
+    "description": "a nice cup of tea"
+}
+
+### PUT add product endpoint
+PUT http://{{host}}:{{port}}/1 HTTP/1.1
+Content-Type: application/json
+
+{
+    "id":1,
+    "name": "tea",
+    "description": "a nice cup of tea"
+}
