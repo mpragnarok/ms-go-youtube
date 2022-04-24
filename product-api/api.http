@@ -20,7 +20,9 @@ Content-Type: application/json
 {
     "id":1,
     "name": "tea",
-    "description": "a nice cup of tea"
+    "description": "a nice cup of tea",
+    "price":100,
+    "sku":"aaa-bbb-ccc"
 }
 
 ### PUT add product endpoint

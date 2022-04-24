@@ -26,6 +26,8 @@ func main() {
 	putRouter.Use(ph.MiddlewareValidateProduct)
 	postRouter := sm.Methods(http.MethodPost).Subrouter()
 	postRouter.HandleFunc("/", ph.AddProduct)
+	postRouter.Use(ph.MiddlewareValidateProduct)
+
 	s := &http.Server{
 		Addr:         ":9090",           // configure the bind address
 		Handler:      sm,                // set the default handler
