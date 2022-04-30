@@ -3,6 +3,7 @@
 // Documentation for Product API
 //
 //	Schemes: http
+//	Host: localhost:9090
 //	BasePath: /
 //	Version: 1.0.0
 //
@@ -67,7 +68,7 @@ type productParamsWrapper struct {
 	Body data.Product
 }
 
-// swagger:parameters updateProduct
+// swagger:parameters listSingleProduct deleteProduct
 type productIDParamsWrapper struct {
 	// The id of the product for which the operation relates
 	// in: path

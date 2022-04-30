@@ -10,11 +10,11 @@
 
 
 ### GET products endpoint
-GET http://{{host}}:{{port}}/ HTTP/1.1
+GET http://{{host}}:{{port}}/products HTTP/1.1
 
 
 ### POST add product endpoint
-POST http://{{host}}:{{port}}/ HTTP/1.1
+POST http://{{host}}:{{port}}/products HTTP/1.1
 Content-Type: application/json
 
 {
@@ -26,11 +26,18 @@ Content-Type: application/json
 }
 
 ### PUT add product endpoint
-PUT http://{{host}}:{{port}}/1 HTTP/1.1
+PUT http://{{host}}:{{port}}/products/1 HTTP/1.1
 Content-Type: application/json
 
 {
     "id":1,
     "name": "tea",
-    "description": "a nice cup of tea"
+    "description": "a nice cup of shit",
+    "price":100,
+    "sku":"aaa-bbb-ccc"
 }
+
+
+### DELETE add product endpoint
+DELETE http://{{host}}:{{port}}/products/1 HTTP/1.1
+
