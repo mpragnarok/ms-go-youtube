@@ -13,7 +13,7 @@ list:
 
 # same package naming where you'll host your package
 init-module:
-	$(GOCMD) mod init github.com/mpragnarok/ms-go-youtube
+	$(GOCMD) mod init github.com/mpragnarok/ms-go-youtube/product-api
 
 test:
 	$(GOCMD) test
@@ -30,4 +30,11 @@ run:
 	$(GOCMD) run main.go
 
 curl:
-	curl localhost:9090/products | jq
+	curl localhost:9090/ | jq
+check_install:
+	which swagger || GO111MODULE=off go get -u github.com/go-swagger/go-swagger/cmd/swagger
+
+swagger: check_install
+	swagger generate spec -o ./swagger.yaml --scan-models
+
+restart: swagger run
