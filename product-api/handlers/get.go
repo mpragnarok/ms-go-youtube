@@ -13,9 +13,9 @@ import (
 
 // ListAll handles GET requests and returns all current products
 func (p *Products) ListAll(rw http.ResponseWriter, r *http.Request) {
+	rw.Header().Set("Content-Type", "application/json")
 	p.l.Println("[DEBUG] get all records")
 	prods := data.GetProducts()
-	rw.Header().Set("Content-Type", "application/json")
 
 	err := data.ToJSON(prods, rw)
 	if err != nil {
@@ -32,6 +32,7 @@ func (p *Products) ListAll(rw http.ResponseWriter, r *http.Request) {
 
 // ListSingle handles GET requests
 func (p *Products) ListSingle(rw http.ResponseWriter, r *http.Request) {
+	rw.Header().Set("Content-Type", "application/json")
 	id := getProductID(r)
 
 	p.l.Println("[DEBUG] get record id", id)
